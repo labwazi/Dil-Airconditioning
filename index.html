@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chill Tech | AC Sales & Servicing in Mauritius</title>
+    <title>Chill Tech | Premium AC Servicing in Mauritius</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -14,6 +14,9 @@
             --dark: #0a192f;
             --light: #f8f9fa;
             --gray: #6c757d;
+            --success: #28a745;
+            --warning: #ffc107;
+            --danger: #dc3545;
         }
         
         * {
@@ -433,77 +436,168 @@
             color: var(--accent);
         }
         
-        /* Products Section */
-        .products {
+        /* Service Packages Section */
+        .packages {
             padding: 100px 0;
+            background: linear-gradient(135deg, rgba(10, 25, 47, 0.9) 0%, rgba(8, 30, 60, 0.9) 100%);
+            position: relative;
+            overflow: hidden;
         }
         
-        .products-grid {
+        .packages::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(0, 198, 255, 0.03)"/></svg>');
+            background-size: cover;
+            z-index: -1;
+        }
+        
+        .packages-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
+            margin-top: 40px;
         }
         
-        .product-card {
+        .package-card {
             background: rgba(255, 255, 255, 0.05);
             border-radius: 15px;
-            overflow: hidden;
+            padding: 40px 30px;
+            text-align: center;
             transition: all 0.3s ease;
             border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-        
-        .product-img {
-            height: 200px;
-            background: linear-gradient(135deg, #1a3a5f, #0a192f);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
             display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .package-card.popular {
+            border: 2px solid var(--accent);
+            transform: scale(1.05);
+            box-shadow: 0 15px 35px rgba(0, 255, 213, 0.2);
+        }
+        
+        .popular-tag {
+            position: absolute;
+            top: 15px;
+            right: -30px;
+            background: var(--accent);
+            color: var(--dark);
+            padding: 5px 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transform: rotate(45deg);
+            width: 150px;
+            text-align: center;
+        }
+        
+        .package-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+        
+        .package-card.popular:hover {
+            transform: scale(1.05) translateY(-10px);
+        }
+        
+        .package-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
             color: var(--accent);
         }
         
-        .product-info {
-            padding: 25px;
+        .package-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--accent);
         }
         
-        .product-info h3 {
-            font-size: 1.4rem;
-            margin-bottom: 10px;
+        .package-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 20px 0;
+            color: var(--accent);
         }
         
-        .product-features {
-            margin: 15px 0;
+        .package-price span {
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--secondary);
         }
         
-        .product-features li {
-            margin-bottom: 8px;
-            font-size: 0.95rem;
-            display: flex;
-            align-items: center;
+        .package-features {
+            list-style: none;
+            text-align: center;
+            margin: 30px 0;
+            flex-grow: 1;
         }
         
-        .product-features li i {
+        .package-features li {
+            padding: 12px 0;
+            position: relative;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+        }
+        
+        .package-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .package-features li i {
             color: var(--accent);
             margin-right: 10px;
-            font-size: 0.8rem;
         }
         
-        .product-price {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 20px;
+        .package-benefits {
+            background: rgba(0, 255, 213, 0.05);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 20px 0;
+            text-align: left;
         }
         
-        .price-tag {
-            font-size: 1.5rem;
-            font-weight: 700;
+        .package-benefits h4 {
             color: var(--accent);
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .package-benefits ul {
+            list-style-type: none;
+        }
+        
+        .package-benefits li {
+            padding: 5px 0;
+            font-size: 0.95rem;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .package-benefits li::before {
+            content: '\f058';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+        
+        .btn-package {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            margin-top: 20px;
         }
         
         /* Testimonials */
@@ -574,6 +668,42 @@
             color: var(--gray);
             margin: 0;
             font-style: normal;
+        }
+        
+        /* Guarantee Section */
+        .guarantee {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #08203e 0%, #0a192f 100%);
+            text-align: center;
+        }
+        
+        .guarantee-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 30px;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .guarantee-icon {
+            font-size: 4rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+        
+        .guarantee-content h3 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+        
+        .guarantee-content p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
         /* Footer */
@@ -675,6 +805,14 @@
             .hero-cta {
                 justify-content: center;
             }
+            
+            .package-card.popular {
+                transform: scale(1);
+            }
+            
+            .package-card.popular:hover {
+                transform: translateY(-10px);
+            }
         }
         
         @media (max-width: 768px) {
@@ -727,6 +865,10 @@
             .card {
                 width: 100%;
             }
+            
+            .package-price {
+                font-size: 2rem;
+            }
         }
     </style>
 </head>
@@ -744,7 +886,7 @@
                 <ul id="menu">
                     <li><a href="#home">Home</a></li>
                     <li><a href="#services">Services</a></li>
-                    <li><a href="#products">Products</a></li>
+                    <li><a href="#packages">Service Packages</a></li>
                     <li><a href="#testimonials">Testimonials</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
@@ -758,10 +900,10 @@
         <div class="container hero-content">
             <div class="hero-text">
                 <h2>Professional <span>AC Solutions</span> for Mauritius</h2>
-                <p>Chill Tech provides premium air conditioning sales, installation, and maintenance services across Mauritius. Keeping your spaces cool and comfortable year-round.</p>
+                <p>Chill Tech provides premium air conditioning installation and maintenance services across Mauritius. Keeping your spaces cool and comfortable year-round with expert care.</p>
                 <div class="hero-cta">
-                    <a href="#services" class="btn btn-primary">Our Services</a>
-                    <a href="#products" class="btn btn-secondary">View Products</a>
+                    <a href="#packages" class="btn btn-primary">View Packages</a>
+                    <a href="tel:+23054956945" class="btn btn-secondary">Call Now</a>
                 </div>
             </div>
             <div class="hero-image">
@@ -858,73 +1000,102 @@
         </div>
     </section>
 
-    <!-- Products Section -->
-    <section class="products" id="products">
+    <!-- Service Packages Section -->
+    <section class="packages" id="packages">
         <div class="container">
             <div class="section-title">
-                <h2>Premium <span>AC Units</span></h2>
-                <p>Top-quality air conditioners for every need</p>
+                <h2>Premium <span>Service Packages</span></h2>
+                <p>Choose the perfect maintenance plan for your cooling needs</p>
             </div>
-            <div class="products-grid">
-                <div class="product-card">
-                    <div class="product-img">
-                        <i class="fas fa-wind"></i>
+            <div class="packages-grid">
+                <div class="package-card">
+                    <div class="package-icon">
+                        <i class="fas fa-fan"></i>
                     </div>
-                    <div class="product-info">
-                        <h3>LG Dual Inverter 1.5 Ton</h3>
-                        <p>Energy-efficient split AC with advanced cooling technology</p>
-                        <ul class="product-features">
-                            <li><i class="fas fa-check-circle"></i> 18,000 BTU Cooling</li>
-                            <li><i class="fas fa-check-circle"></i> Energy Star Certified</li>
-                            <li><i class="fas fa-check-circle"></i> Wi-Fi Smart Control</li>
-                            <li><i class="fas fa-check-circle"></i> 5-Year Warranty</li>
+                    <h3>Essential Care</h3>
+                    <div class="package-price">MUR 1,999 <span>per unit/year</span></div>
+                    <ul class="package-features">
+                        <li><i class="fas fa-check"></i> Bi-Annual Maintenance</li>
+                        <li><i class="fas fa-check"></i> Full System Cleaning</li>
+                        <li><i class="fas fa-check"></i> Filter Replacement</li>
+                        <li><i class="fas fa-check"></i> Performance Check</li>
+                        <li><i class="fas fa-check"></i> 10% Discount on Repairs</li>
+                    </ul>
+                    <div class="package-benefits">
+                        <h4>Perfect For:</h4>
+                        <ul>
+                            <li>Homeowners with 1-2 units</li>
+                            <li>Preventative maintenance</li>
+                            <li>Basic performance upkeep</li>
                         </ul>
-                        <div class="product-price">
-                            <div class="price-tag">MUR38,500</div>
-                            <a href="#contact" class="btn btn-secondary">Inquire</a>
-                        </div>
                     </div>
+                    <a href="#contact" class="btn-package btn-primary">Get Started</a>
                 </div>
                 
-                <div class="product-card">
-                    <div class="product-img">
-                        <i class="fas fa-wind"></i>
+                <div class="package-card popular">
+                    <div class="popular-tag">MOST POPULAR</div>
+                    <div class="package-icon">
+                        <i class="fas fa-snowflake"></i>
                     </div>
-                    <div class="product-info">
-                        <h3>LG Window AC 1 Ton</h3>
-                        <p>Compact solution for small to medium-sized rooms</p>
-                        <ul class="product-features">
-                            <li><i class="fas fa-check-circle"></i> 12,000 BTU Cooling</li>
-                            <li><i class="fas fa-check-circle"></i> Easy Installation</li>
-                            <li><i class="fas fa-check-circle"></i> Low Noise Operation</li>
-                            <li><i class="fas fa-check-circle"></i> 3-Year Warranty</li>
+                    <h3>Premium Protection</h3>
+                    <div class="package-price">MUR 3,499 <span>per unit/year</span></div>
+                    <ul class="package-features">
+                        <li><i class="fas fa-check"></i> Quarterly Maintenance</li>
+                        <li><i class="fas fa-check"></i> Comprehensive Cleaning</li>
+                        <li><i class="fas fa-check"></i> Filter Replacement x2/year</li>
+                        <li><i class="fas fa-check"></i> Priority Service Calls</li>
+                        <li><i class="fas fa-check"></i> 20% Discount on Repairs</li>
+                        <li><i class="fas fa-check"></i> Free Gas Top-up</li>
+                    </ul>
+                    <div class="package-benefits">
+                        <h4>Perfect For:</h4>
+                        <ul>
+                            <li>Homes with 3+ units</li>
+                            <li>Businesses</li>
+                            <li>High-usage environments</li>
                         </ul>
-                        <div class="product-price">
-                            <div class="price-tag">MUR22,900</div>
-                            <a href="#contact" class="btn btn-secondary">Inquire</a>
-                        </div>
                     </div>
+                    <a href="#contact" class="btn-package btn-primary">Get Premium</a>
                 </div>
                 
-                <div class="product-card">
-                    <div class="product-img">
-                        <i class="fas fa-wind"></i>
+                <div class="package-card">
+                    <div class="package-icon">
+                        <i class="fas fa-building"></i>
                     </div>
-                    <div class="product-info">
-                        <h3>LG ArtCool 2 Ton</h3>
-                        <p>Premium AC with artistic design for modern spaces</p>
-                        <ul class="product-features">
-                            <li><i class="fas fa-check-circle"></i> 24,000 BTU Cooling</li>
-                            <li><i class="fas fa-check-circle"></i> Modern Gallery Design</li>
-                            <li><i class="fas fa-check-circle"></i> 4-Way Airflow</li>
-                            <li><i class="fas fa-check-circle"></i> 7-Year Warranty</li>
+                    <h3>Commercial Plan</h3>
+                    <div class="package-price">MUR 499 <span>per unit/month</span></div>
+                    <ul class="package-features">
+                        <li><i class="fas fa-check"></i> Monthly Maintenance</li>
+                        <li><i class="fas fa-check"></i> 24/7 Emergency Support</li>
+                        <li><i class="fas fa-check"></i> Filter Replacement as needed</li>
+                        <li><i class="fas fa-check"></i> Full System Diagnostics</li>
+                        <li><i class="fas fa-check"></i> 30% Discount on Repairs</li>
+                        <li><i class="fas fa-check"></i> Energy Efficiency Reports</li>
+                    </ul>
+                    <div class="package-benefits">
+                        <h4>Perfect For:</h4>
+                        <ul>
+                            <li>Office buildings</li>
+                            <li>Retail spaces</li>
+                            <li>Restaurants & hotels</li>
                         </ul>
-                        <div class="product-price">
-                            <div class="price-tag">MUR55,000</div>
-                            <a href="#contact" class="btn btn-secondary">Inquire</a>
-                        </div>
                     </div>
+                    <a href="#contact" class="btn-package btn-primary">Business Inquiry</a>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guarantee Section -->
+    <section class="guarantee">
+        <div class="container">
+            <div class="guarantee-content">
+                <div class="guarantee-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Our Service Guarantee</h3>
+                <p>At Chill Tech, we stand behind our work with a 90-day guarantee on all repairs and maintenance. If you experience any issues with your AC system within 90 days of our service, we'll return at no extra charge to make it right.</p>
+                <a href="#contact" class="btn btn-secondary">Book with Confidence</a>
             </div>
         </div>
     </section>
@@ -952,7 +1123,7 @@
                 
                 <div class="testimonial-card">
                     <div class="testimonial-content">
-                        <p>"We purchased three LG units from Chill Tech for our office. The installation was professional and the team was very knowledgeable. Their after-sales service is exceptional."</p>
+                        <p>"The Premium Protection package is worth every rupee! My AC units have never run better, and the energy savings alone are covering the cost of the plan."</p>
                         <div class="client">
                             <div class="client-img">SP</div>
                             <div class="client-info">
@@ -985,24 +1156,19 @@
             <div class="footer-grid">
                 <div class="footer-col">
                     <h4>Chill Tech</h4>
-                    <p>Your trusted partner for premium air conditioning solutions in Mauritius. We provide sales, installation, and maintenance services for residential and commercial clients.</p>
+                    <p>Your trusted partner for premium air conditioning solutions in Mauritius. We provide installation and maintenance services for residential and commercial clients.</p>
                     <div class="social-links">
-  <!-- Facebook -->
-  <a href="https://www.facebook.com/YourPageUsername" target="_blank">
-    <i class="fab fa-facebook-f"></i>
-  </a>
-
-  <!-- Instagram -->
-  <a href="https://www.instagram.com/YourInstagramHandle" target="_blank">
-    <i class="fab fa-instagram"></i>
-  </a>
-
-  <!-- WhatsApp -->
-  <a href="https://wa.me/23054956945?text=Hello%2C%20I%20would%20like%20to%20know%20more%20about%20your%20services" target="_blank">
-    <i class="fab fa-whatsapp"></i>
-  </a>
-</div>
-
+                        <a href="https://www.facebook.com/" target="_blank">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com/" target="_blank">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://wa.me/23054956945?text=Hello%2C%20I%20would%20like%20to%20know%20more%20about%20your%20services" target="_blank">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
                 
                 <div class="footer-col">
                     <h4>Contact Us</h4>
@@ -1028,8 +1194,12 @@
                 
                 <div class="footer-col">
                     <h4>Service Areas</h4>
-                    <ul class="service-areas">
-                        <li><i class="fas fa-check"></i> All regions of Mauritius</li>
+                    <ul class="contact-list">
+                        <li><i class="fas fa-map-marker-alt"></i> Port Louis</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Curepipe</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Grand Baie</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Quatre Bornes</li>
+                        <li><i class="fas fa-map-marker-alt"></i> All regions of Mauritius</li>
                     </ul>
                 </div>
             </div>
@@ -1073,6 +1243,22 @@
                 header.style.background = 'rgba(10, 25, 47, 0.95)';
                 header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.3)';
             }
+        });
+        
+        // Package card animation
+        const packageCards = document.querySelectorAll('.package-card');
+        packageCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-10px)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                if (!card.classList.contains('popular')) {
+                    card.style.transform = 'translateY(0)';
+                } else {
+                    card.style.transform = 'scale(1.05)';
+                }
+            });
         });
     </script>
 </body>
